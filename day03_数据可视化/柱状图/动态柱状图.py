@@ -1,7 +1,7 @@
 from pyecharts.charts import Bar, Line, Timeline
 from pyecharts.options import *
 from pyecharts.globals import *
-
+# pyecharts为2.0.3版本才不会有x轴数据重叠的bug
 f = open("../可视化案例数据/动态柱状图数据/1960-2019全球GDP数据.csv", "r", encoding="GB2312")
 data_lines = f.readlines()
 # print(data_lines)
@@ -43,7 +43,7 @@ for year in sorted_year_list:
     bar.add_xaxis(x_data)
     bar.add_yaxis("GDP(亿)", y_data, label_opts=LabelOpts(position="right"))
     # 翻转xy
-    # bar.reversal_axis()
+    bar.reversal_axis()
     bar.set_global_opts(
         title_opts=TitleOpts(title=f"{year}年全球前8GDP数据")
     )
